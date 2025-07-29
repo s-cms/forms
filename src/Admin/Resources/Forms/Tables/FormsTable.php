@@ -4,7 +4,6 @@ namespace SmartCms\Forms\Admin\Resources\Forms\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
 use Filament\Tables\Table;
 use SmartCms\Support\Admin\Components\Tables\CreatedAtColumn;
 use SmartCms\Support\Admin\Components\Tables\NameColumn;
@@ -24,7 +23,7 @@ class FormsTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                // EditAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
