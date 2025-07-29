@@ -22,6 +22,7 @@ class ListForms extends ListRecords
                 ->modalWidth(Width::ExtraLarge)
                 ->action(function (array $data) {
                     $form = Form::query()->create($data);
+
                     return redirect()->to(FormResource::getUrl('edit', ['record' => $form->id]));
                 }),
         ];
