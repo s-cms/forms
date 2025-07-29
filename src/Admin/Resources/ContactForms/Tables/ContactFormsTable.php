@@ -26,9 +26,7 @@ class ContactFormsTable
             ->filters([
                 SelectFilter::make('status')->options(ContactFormStatusesEnum::class),
             ])
-            ->recordActions([
-                EditAction::make(),
-            ])
+            ->recordActions([])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),

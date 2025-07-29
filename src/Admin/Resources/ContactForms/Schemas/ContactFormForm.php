@@ -25,9 +25,7 @@ class ContactFormForm
                         Section::make()->compact()->schema([
                             TextInput::make('prefix')->label(__('support::admin.name'))->disabled(),
                         ]),
-                        Section::make()->compact()->schema([
-                            KeyValue::make('data')->deletable(false)->hiddenLabel()->keyLabel(__('kit::admin.form_data_key'))->valueLabel(__('kit::admin.form_data_value')),
-                        ]),
+                        KeyValue::make('data')->deletable(false)->hiddenLabel()->keyLabel(__('kit::admin.form_data_key'))->valueLabel(__('kit::admin.form_data_value')),
                         Section::make()->compact()->schema([
                             Textarea::make('comment')->label(__('kit::admin.comment'))->maxLength(255)->columnSpanFull(),
                         ]),

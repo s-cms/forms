@@ -15,9 +15,15 @@ class EditContactForm extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
-            SaveAndClose::make($this, ContactFormResource::getUrl()),
-            SaveAction::make($this),
+            \Filament\Actions\ActionGroup::make([
+                SaveAction::make($this),
+                SaveAndClose::make($this, ContactFormResource::getUrl()),
+                DeleteAction::make(),
+            ])->link()->label('Actions')
+                ->icon(\Filament\Support\Icons\Heroicon::ChevronDown)
+                ->size(\Filament\Support\Enums\Size::Small)
+                ->iconPosition(\Filament\Support\Enums\IconPosition::After)
+                ->color('primary'),
         ];
     }
 }
