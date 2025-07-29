@@ -15,9 +15,15 @@ class EditForm extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
-            SaveAndClose::make($this, FormResource::getUrl()),
-            SaveAction::make($this),
+            \Filament\Actions\ActionGroup::make([
+                SaveAction::make($this),
+                SaveAndClose::make($this, FormResource::getUrl('index')),
+                DeleteAction::make(),
+            ])->link()->label('Actions')
+                ->icon(\Filament\Support\Icons\Heroicon::ChevronDown)
+                ->size(\Filament\Support\Enums\Size::Small)
+                ->iconPosition(\Filament\Support\Enums\IconPosition::After)
+                ->color('primary'),
         ];
     }
 }
