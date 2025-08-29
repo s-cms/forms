@@ -24,14 +24,14 @@ class FormComponent extends Component implements HasForms
 {
     use InteractsWithForms;
 
-    public Form $model;
+    public Form $options;
 
     public ?array $data = [];
 
     public function form(Schema $schema): Schema
     {
         $form = [];
-        foreach ($this->model->fields as $field) {
+        foreach ($this->options->fields as $field) {
             $name = str()->slug($field['label']);
             $formField = match ($field['type']) {
                 'select' => Select::make($name)->options($field['options'])->label($field['label']),
@@ -48,7 +48,7 @@ class FormComponent extends Component implements HasForms
 
     public function render(): View
     {
-        return view('livewire.contact-form', [
+        return view('livewire.demo-form', [
             'form' => $this->form,
         ]);
     }
@@ -58,13 +58,13 @@ class FormComponent extends Component implements HasForms
         $this->form->validate();
         $state = $this->form->getState();
         ContactForm::query()->create([
-            'prefix' => $this->model->name,
+            'prefix' => $this->options->name,
             'data' => $state,
             'ip' => request()->ip(),
             'user_agent' => request()->userAgent(),
             'referer_url' => request()->headers->get('referer'),
         ]);
         $this->dispatch('form-submitted');
-        $this->form->reset();
+        $this->form->fill([]);
     }
 }

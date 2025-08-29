@@ -16,6 +16,7 @@ class ContactFormsTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->defaultSort('updated_at', 'desc')
             ->columns([
                 TextColumn::make('prefix'),
                 TextColumn::make('status')->label(__('support::admin.status'))->badge(),
