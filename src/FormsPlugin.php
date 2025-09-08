@@ -22,7 +22,7 @@ class FormsPlugin implements Plugin
         // if (!$panel->getModelResource(Form::class)) {
         //     $resources[] = FormResource::class;
         // }
-        if (!$panel->getModelResource(ContactForm::class)) {
+        if (! $panel->getModelResource(ContactForm::class)) {
             $resources[] = ContactFormResource::class;
         }
         $panel->resources($resources);
