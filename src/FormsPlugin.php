@@ -6,6 +6,8 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use SmartCms\Forms\Admin\Resources\ContactForms\ContactFormResource;
 use SmartCms\Forms\Admin\Resources\Forms\FormResource;
+use SmartCms\Forms\Models\ContactForm;
+use SmartCms\Forms\Models\Form;
 
 class FormsPlugin implements Plugin
 {
@@ -16,10 +18,14 @@ class FormsPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel->resources([
-            FormResource::class,
-            ContactFormResource::class,
-        ]);
+        $resources = [];
+        // if (!$panel->getModelResource(Form::class)) {
+        //     $resources[] = FormResource::class;
+        // }
+        if (!$panel->getModelResource(ContactForm::class)) {
+            $resources[] = ContactFormResource::class;
+        }
+        $panel->resources($resources);
     }
 
     public function boot(Panel $panel): void {}
