@@ -13,7 +13,7 @@ return new class extends Migration
         Schema::create(config('forms.contact_forms_table_name','contact_forms'), function (Blueprint $table) {
             $table->id();
             $table->string('prefix')->nullable();
-            $table->string('status')->default(ContactFormStatusesEnum::NEW);
+            $table->string('status')->default(ContactFormStatusesEnum::NEW->value);
             $table->text('comment')->nullable();
             $table->json('data')->nullable();
             $table->string('ip')->nullable();
